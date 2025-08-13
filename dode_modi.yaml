@@ -1,0 +1,185 @@
+generator: ck2yaml
+input-files: [Dodecane04.inp, therm.dat, tran.dat]
+cantera-version: 3.0.1
+date: Mon, 20 Jan 2025 16:43:32 +0530
+
+units: {length: cm, time: s, quantity: mol, activation-energy: cal/mol}
+
+phases:
+- name: gas
+  thermo: ideal-gas
+  elements: [O, H, C, N]
+  species: [FFF, XXX, O2, III, P, N2 ]
+  kinetics: gas
+  transport: mixture-averaged
+  state: {T: 300.0, P: 1 atm}
+
+species:
+
+- name: FFF
+  composition: {C: 12, H: 26}
+  thermo:
+    model: NASA7
+    temperature-ranges: [300.0, 1391.0, 5000.0]
+    data:
+    - [-2.62181594, 0.147237711, -9.43970271e-05, 3.07441268e-08, -4.0360223e-12,
+      -4.00654253e+04, 50.0994626]
+    - [38.5095037, 0.0563550048, -1.914932e-05, 2.96024862e-09, -1.7124415e-13,
+      -5.48843465e+04, -172.670922]
+    note: 1/ 2/ 7 THERM
+  transport:
+    model: gas
+    geometry: nonlinear
+    well-depth: 789.98
+    diameter: 7.047
+    rotational-relaxation: 1.0
+    note: n-dodecane
+    
+- name: XXX
+  composition: {C: 12, H: 26}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 1000.0, 3500.0]
+    data:
+    #~ - [3.95920148, -7.57052247e-03, 5.70990292e-05, -6.91588753e-08, 2.69884373e-11,
+       #~ 5089.77593, 4.09733096]
+    #~ - [2.03611116, 0.0146454151, -6.71077915e-06, 1.47222923e-09, -1.25706061e-13,
+       #~ 4939.88614, 10.3053693]
+     - [3.72655981e+00, -5.28358958e-03, 4.26366506e-05, -5.16326651e-08, 2.01307017e-11, 9.32166978e+03, 3.92383149e+00]
+     - [2.13124388e+00, 1.17052911e-02, -5.31952384e-06, 1.15905939e-09, -9.84131699e-14, 9.25581721e+03, 9.39314147e+00]
+    note: L 1/91
+  transport:
+    model: gas
+    geometry: nonlinear
+    well-depth: 280.8
+    diameter: 3.971
+    rotational-relaxation: 1.5
+
+- name: O2
+  composition: {O: 2}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 1000.0, 3500.0]
+    data:
+    - [3.78245636, -2.99673416e-03, 9.84730201e-06, -9.68129509e-09, 3.24372837e-12,
+      -1063.94356, 3.65767573]
+    - [3.28253784, 1.48308754e-03, -7.57966669e-07, 2.09470555e-10, -2.16717794e-14,
+      -1088.45772, 5.45323129]
+    note: TPIS89
+  transport:
+    model: gas
+    geometry: linear
+    well-depth: 107.4
+    diameter: 3.458
+    polarizability: 1.6
+    rotational-relaxation: 3.8
+    
+- name: III
+  composition: {H: 26, O: 4, C: 12}
+  thermo:
+    model: NASA7
+    temperature-ranges: [300.0, 1000.0, 5000.0]
+    data:
+    #~ - [8.80733, 0.0650623, 6.95058e-05, -1.26905e-07, 5.10991e-11, -6.65361e+04,
+        #~ 6.84155]
+    #~ - [23.6731, 0.0616392, -2.09836e-05, 3.33166e-09, -2.0359e-13, -7.18258e+04,
+       #~ -77.7662]
+    - [6.50298528e+00, 3.15129330e-02, 3.80131011e-05, -6.61964853e-08, 2.64355391e-11, -4.84148688e+04, 3.68933737e+00]
+    - [1.33535462e+01, 3.19080590e-02, -1.05738363e-05, 1.61730901e-09, -9.33849504e-14, -5.09150420e+04, -3.57065759e+01]
+    note: |-
+  transport:
+    model: gas
+    geometry: nonlinear
+    well-depth: 839.348
+    diameter: 7.273
+    rotational-relaxation: 1.0
+    
+- name: P
+  composition: {H: 26, O: 37, C: 12}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 1000.0, 3500.0]
+    data:
+    - [3.275642e+00, 3.703642e-03, -1.605747e-06, 4.422473e-10, -9.485908e-14,-3.897185e+04, 5.141321e+00]
+    - [3.715416e+00,2.639278e-03, -6.989545e-07,6.444992e-11,  7.351015e-16,-3.910638e+04,2.816474e+00]
+    note: L 8/89
+  transport:
+    model: gas
+    geometry: nonlinear
+    well-depth: 572.4
+    diameter: 2.605
+    dipole: 1.844
+    rotational-relaxation: 4.0
+
+- name: H2O
+  composition: {H: 2, O: 1}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 1000.0, 3500.0]
+    data:
+    - [4.19864056, -2.0364341e-03, 6.52040211e-06, -5.48797062e-09, 1.77197817e-12,
+      -3.02937267e+04, -0.849032208]
+    - [3.03399249, 2.17691804e-03, -1.64072518e-07, -9.7041987e-11, 1.68200992e-14,
+      -3.00042971e+04, 4.9667701]
+    note: L 8/89
+  transport:
+    model: gas
+    geometry: nonlinear
+    well-depth: 572.4
+    diameter: 2.605
+    dipole: 1.844
+    rotational-relaxation: 4.0
+    
+- name: CO2
+  composition: {O: 2, C: 1}
+  thermo:
+    model: NASA7
+    temperature-ranges: [300.0, 1000.0, 5000.0]
+    data:
+    - [2.275725, 9.922072e-03, -1.040911e-05, 6.866687e-09, -2.11728e-12,
+      -4.837314e+04, 10.18849]
+    - [4.453623, 3.140169e-03, -1.278411e-06, 2.393997e-10, -1.669033e-14,
+      -4.896696e+04, -0.9553959]
+    note: '121286'
+  transport:
+    model: gas
+    geometry: linear
+    well-depth: 244.0
+    diameter: 3.763
+    polarizability: 2.65
+    rotational-relaxation: 2.1
+    
+    
+- name: N2
+  composition: {N: 2}
+  thermo:
+    model: NASA7
+    temperature-ranges: [300.0, 1000.0, 5000.0]
+    data:
+    - [3.298677, 1.4082404e-03, -3.963222e-06, 5.641515e-09, -2.444854e-12,
+      -1020.8999, 3.950372]
+    - [2.92664, 1.4879768e-03, -5.68476e-07, 1.0097038e-10, -6.753351e-15,
+      -922.7977, 5.980528]
+    note: '121286'
+  transport:
+    model: gas
+    geometry: linear
+    well-depth: 97.53
+    diameter: 3.621
+    polarizability: 1.76
+    rotational-relaxation: 4.0
+    
+reactions:
+- equation:  FFF => XXX	                                                #REACTION 01
+  rate-constant: {A: 1.0e+10, b: 0.0, Ea: 43022.64818}
+- equation:  XXX + 18.5 O2 => P                                         #REACTION 02
+  rate-constant: {A: 2.0E+012 , b: 0.0 , Ea: 14340.88273}
+  orders:        {XXX: 1, O2: 1} 
+- equation:  FFF + 2 O2 => III                                          #REACTION 03f
+  rate-constant: {A: 3.0E+018 , b: 0.0, Ea: 43022.64818}
+  orders: {FFF: 1, O2: 1}
+- equation:  III => FFF + 2 O2					                        #REACTION 03b
+  rate-constant: {A: 4.0E+022, b: 0.0, Ea: 74092.35277}
+- equation:  III +  16.5 O2 => P                                        #REACTION 04
+  rate-constant: {A: 5.0E+013, b: 0.0, Ea: 26290.51434} 
+  orders: {III: 1, O2: 1}
