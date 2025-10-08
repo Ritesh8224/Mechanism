@@ -1,0 +1,89 @@
+
+generator: ck2yaml
+input-files: [Dodecane04.inp, therm.dat, tran.dat]
+cantera-version: 3.0.1
+date: Mon, 20 Jan 2025 16:43:32 +0530
+
+units: {length: cm, time: s, quantity: mol, activation-energy: cal/mol}
+
+phases:
+- name: gas
+  thermo: ideal-gas
+  elements: [O, H, C]
+  species: [O2, NC12H26, P]
+  kinetics: gas
+  transport: mixture-averaged
+  state: {T: 300.0, P: 1 atm}
+
+species:
+- name: O2
+  composition: {O: 2}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 1000.0, 6000.0]
+    data:
+    - [ 3.78245636e+00, -2.99673416e-03,  9.84730201e-06,-9.68129509e-09,  3.24372837e-12, -1.06394356e+03,3.65767573e+00 ]
+    - [ 3.66096065e+00,  6.56365811e-04, -1.41149627e-07,2.05797935e-11, -1.29913436e-15, -1.21597718e+03,3.41536279e+00 ]
+    note: TPIS89
+  transport:
+    model: gas
+    geometry: linear
+    well-depth: 107.4
+    diameter: 3.458
+    polarizability: 1.6
+    rotational-relaxation: 3.8
+
+- name: NC12H26
+  composition: {C: 12, H: 26}
+  thermo:
+    model: NASA7
+    temperature-ranges: [300.0, 1000.0, 6000.0]
+    data:
+    - [ 2.13264480e+01, -3.86394002e-02,  3.99476113e-04,
+         -5.06681097e-07,  2.00697878e-10, -4.22475053e+04,
+         -4.85848300e+01 ]
+    - [ 3.70187925e+01,  5.54721488e-02, -1.92079548e-05,
+          3.08175574e-09, -1.84800617e-13, -5.26984458e+04,
+         -1.61453501e+02 ]
+    note: 1/ 2/ 7 THERM
+  transport:
+    model: gas
+    geometry: nonlinear
+    well-depth: 789.98
+    diameter: 7.047
+    rotational-relaxation: 1.0
+    note: n-dodecane
+
+
+
+
+- name: P
+  composition: {C: 0.36474, H: 0.79027, O: 1.12462}
+  #~ composition: {C: 12, H: 26, O: 37}
+  thermo:
+    model: NASA7
+    temperature-ranges: [200.0, 1000.0, 6000.0]
+    data:
+    - [ 3.51130539e+00,  1.48555737e-04,  1.83147419e-06,
+         -1.53588695e-09,  4.19375828e-13, -1.41701622e+04,
+          2.35683587e+00 ]
+    - [ 3.13307394e+00,  1.67150071e-03, -4.97411555e-07,
+          7.15233359e-11, -3.86222828e-15, -1.40943130e+04,
+          4.18107019e+00 ]
+    note: L 8/89
+  transport:
+    model: gas
+    geometry: linear
+    well-depth: 572.4
+    diameter: 2.605
+    dipole: 1.844
+    rotational-relaxation: 4.0
+    
+reactions:
+- equation:  NC12H26 + 18.5 O2  => 32.9  P       
+#~ - equation:  NC12H26 + 18.5 O2  =>   P            # REACTION 01
+  rate-constant: {A: 6.6e+13, b: 0, Ea: 46500}
+  orders: {NC12H26 : 1, O2: 0.75}
+    
+
+
