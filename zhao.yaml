@@ -3,6 +3,7 @@ description: |-
   Chemistry reduced by PFA @2024-04-29 14:59:26
   P=1.00002.0000atm;T=1000.00001200.0000K;Mix=C12H26 1.00, O2 37.00, N2 139.12,C12H26 1.00, O2 18.50, N2 69.56,C12H26 1.00, O2 12.33, N2 46.37;THD=0.4000;HHR=0.2000
   Detailed SP#=35,RA#=110=)Reduced SP#=34;RA#=105
+  33S/109 REACTION VALIDATED 
   -----------------------------------------------------------------
 
 generator: ck2yaml
